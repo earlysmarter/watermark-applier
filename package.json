@@ -1,0 +1,19 @@
+{
+  "name": "watermark-applier",
+  "version": "0.1.0",
+  "description": "Batch-apply repeated watermarks to local image folders in the browser.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite --host 127.0.0.1",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "vite": "^7.2.4"
+  },
+  "devDependencies": {
+    "vitest": "^4.0.15"
+  }
+}

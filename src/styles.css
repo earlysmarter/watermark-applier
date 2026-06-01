@@ -1,0 +1,188 @@
+:root {
+  color: #20231f;
+  background: #f6f4ef;
+  font-family:
+    Inter, Pretendard, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+}
+
+.workspace {
+  width: min(760px, 100%);
+  border: 1px solid #d8d7d0;
+  border-radius: 8px;
+  background: #fffefa;
+  box-shadow: 0 18px 48px rgba(48, 54, 42, 0.1);
+  padding: 28px;
+}
+
+.brand-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 22px;
+  align-items: center;
+}
+
+.brand-logo {
+  width: 160px;
+  height: auto;
+  display: block;
+}
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.15;
+}
+
+.support-message {
+  min-height: 24px;
+  margin: 8px 0 0;
+  color: #62675f;
+  line-height: 1.5;
+}
+
+.action-row {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 32px;
+}
+
+#select-folder {
+  min-width: 132px;
+  min-height: 44px;
+  border: 0;
+  border-radius: 8px;
+  background: #20231f;
+  color: #f7ffe4;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+#select-folder:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.folder-name {
+  min-width: 0;
+  overflow: hidden;
+  color: #4f544b;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.progress-area {
+  margin-top: 28px;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  line-height: 1.4;
+}
+
+.progress-track {
+  width: 100%;
+  height: 12px;
+  margin-top: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e6e5df;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: #8df05d;
+  transition: width 160ms ease;
+}
+
+.log-list {
+  display: grid;
+  max-height: 280px;
+  margin: 28px 0 0;
+  padding: 0;
+  gap: 8px;
+  overflow: auto;
+  list-style: none;
+}
+
+.log-item {
+  border: 1px solid #dddcd4;
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: #42473f;
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+}
+
+.log-item.success {
+  border-color: #cde9bf;
+  background: #f2faee;
+}
+
+.log-item.warning {
+  border-color: #eadb9b;
+  background: #fff9df;
+}
+
+.log-item.error {
+  border-color: #efc3bd;
+  background: #fff0ee;
+  color: #7d2922;
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    align-items: stretch;
+    padding: 12px;
+  }
+
+  .workspace {
+    padding: 20px;
+  }
+
+  .brand-row {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-logo {
+    width: 150px;
+  }
+
+  .action-row,
+  .progress-label {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  #select-folder {
+    width: 100%;
+  }
+}

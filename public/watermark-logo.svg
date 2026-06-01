@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="220" viewBox="0 0 720 220" role="img" aria-labelledby="title desc">
+  <title id="title">Watermark Applier sample logo</title>
+  <desc id="desc">A generic sample watermark logo for demos.</desc>
+  <defs>
+    <linearGradient id="markGradient" x1="80" x2="640" y1="20" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2dd4bf" />
+      <stop offset="0.55" stop-color="#84cc16" />
+      <stop offset="1" stop-color="#f59e0b" />
+    </linearGradient>
+  </defs>
+  <rect width="720" height="220" rx="32" fill="#101418" />
+  <circle cx="112" cy="110" r="66" fill="none" stroke="url(#markGradient)" stroke-width="18" />
+  <path d="M67 110h90M112 65v90" stroke="#f8fafc" stroke-width="14" stroke-linecap="round" opacity="0.9" />
+  <text x="214" y="105" fill="#f8fafc" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="52" font-weight="800" letter-spacing="0">
+    WATERMARK
+  </text>
+  <text x="216" y="157" fill="#b7c0ca" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="31" font-weight="600" letter-spacing="0">
+    APPLIER
+  </text>
+</svg>
