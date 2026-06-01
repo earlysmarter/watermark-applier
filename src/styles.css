@@ -64,11 +64,92 @@ h1 {
   line-height: 1.5;
 }
 
+.style-panel {
+  margin: 30px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.style-panel legend {
+  padding: 0;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.style-help {
+  margin: 6px 0 14px;
+  color: #62675f;
+  line-height: 1.5;
+}
+
+.style-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.style-option {
+  display: block;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.style-option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.style-option-body {
+  display: grid;
+  min-height: 112px;
+  align-content: start;
+  gap: 8px;
+  border: 1px solid #dddcd4;
+  border-radius: 8px;
+  padding: 14px;
+  background: #fffefa;
+  color: #42473f;
+  transition:
+    border-color 140ms ease,
+    box-shadow 140ms ease,
+    transform 140ms ease;
+}
+
+.style-option-body strong {
+  color: #20231f;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.style-option-body span {
+  color: #62675f;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.style-option input:focus-visible + .style-option-body {
+  outline: 3px solid rgba(141, 240, 93, 0.45);
+  outline-offset: 2px;
+}
+
+.style-option input:checked + .style-option-body {
+  border-color: #6fbf47;
+  box-shadow: 0 0 0 3px rgba(141, 240, 93, 0.22);
+}
+
+.style-option:hover .style-option-body {
+  transform: translateY(-1px);
+}
+
 .action-row {
   display: flex;
   gap: 14px;
   align-items: center;
-  margin-top: 32px;
+  margin-top: 28px;
 }
 
 #select-folder {
@@ -158,6 +239,11 @@ h1 {
   color: #7d2922;
 }
 
+.log-item.info {
+  border-color: #cdd9ef;
+  background: #f1f6ff;
+}
+
 @media (max-width: 640px) {
   .app-shell {
     align-items: stretch;
@@ -174,6 +260,10 @@ h1 {
 
   .brand-logo {
     width: 150px;
+  }
+
+  .style-options {
+    grid-template-columns: 1fr;
   }
 
   .action-row,

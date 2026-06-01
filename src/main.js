@@ -1,6 +1,11 @@
 import './styles.css';
 import { processDirectory } from './folder/folderProcessor.js';
 import { formatProgressState } from './ui/progressState.js';
+import {
+  DEFAULT_WATERMARK_STYLE_ID,
+  getWatermarkStyle,
+  listWatermarkStyles
+} from './watermark/styles.js';
 
 const elements = {
   button: document.querySelector('#select-folder'),
@@ -9,10 +14,14 @@ const elements = {
   progressPercent: document.querySelector('#progress-percent'),
   progressFill: document.querySelector('#progress-fill'),
   logList: document.querySelector('#log-list'),
-  supportMessage: document.querySelector('#support-message')
+  supportMessage: document.querySelector('#support-message'),
+  styleOptions: document.querySelector('#style-options')
 };
 
+let selectedStyleId = DEFAULT_WATERMARK_STYLE_ID;
 const isSupported = 'showDirectoryPicker' in window;
+
+renderStyleOptions();
 elements.button.disabled = !isSupported;
 elements.supportMessage.textContent = isSupported
   ? 'Select an image folder. Processed files are saved to a result folder.'
@@ -27,12 +36,11 @@ elements.button.addEventListener('click', async () => {
     const logoImage = await loadLogo(`${import.meta.env.BASE_URL}watermark-logo.svg`);
 
     elements.folderName.textContent = directoryHandle.name;
+    const selectedStyle = getWatermarkStyle(selectedStyleId);
+    appendLog(`Using ${selectedStyle.label} watermark style.`, 'info');
 
     const summary = await processDirectory(directoryHandle, logoImage, {
-      watermark: {
-        tint: '#eaffaa',
-        opacity: 0.22
-      },
+      watermark: selectedStyle.options,
       onProgress: updateProgress
     });
 
@@ -48,6 +56,35 @@ elements.button.addEventListener('click', async () => {
     elements.button.disabled = !isSupported;
   }
 });
+
+function renderStyleOptions() {
+  for (const style of listWatermarkStyles()) {
+    const option = document.createElement('label');
+    option.className = 'style-option';
+
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = 'watermark-style';
+    radio.value = style.id;
+    radio.checked = style.id === selectedStyleId;
+    radio.addEventListener('change', () => {
+      selectedStyleId = style.id;
+    });
+
+    const body = document.createElement('span');
+    body.className = 'style-option-body';
+
+    const title = document.createElement('strong');
+    title.textContent = style.label;
+
+    const description = document.createElement('span');
+    description.textContent = style.description;
+
+    body.append(title, description);
+    option.append(radio, body);
+    elements.styleOptions.append(option);
+  }
+}
 
 function updateProgress(progress) {
   setProgress(formatProgressState(progress));

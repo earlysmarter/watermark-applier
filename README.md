@@ -4,14 +4,24 @@ Batch-apply a repeated watermark to local image folders directly in the browser.
 
 Watermark Applier uses the File System Access API in Chrome and Edge, so images stay on your computer. The app reads a selected folder, skips any existing `result` folder, and writes processed images back to a new `result` folder while preserving nested paths.
 
+Live demo: https://earlysmarter.github.io/watermark-applier/
+
 ## Features
 
 - Process folders recursively without uploading images to a server.
 - Save output images into a generated `result` folder.
+- Choose from multiple watermark styles before processing.
 - Preserve JPEG, PNG, and WebP output formats when supported by canvas.
 - Convert GIF and BMP inputs to PNG output.
 - Show per-file progress and errors.
 - Includes unit tests for layout, file collection, image output descriptors, and progress state.
+
+## Watermark Styles
+
+- Balanced: default diagonal spacing for everyday exports.
+- Subtle: lower opacity and wider spacing for lighter brand presence.
+- Bold: larger, stronger marks for high-visibility protection.
+- Compact: smaller repeated marks for dense image grids and previews.
 
 ## Browser Support
 
